@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Güler'e Özel ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Zarf / Başlangıç Ekranı */
+        .envelope-wrapper {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 24px;
+            padding: 40px 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.4s ease;
+        }
+
+        .envelope-wrapper:active {
+            transform: scale(0.96);
+        }
+
+        .envelope-icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .envelope-wrapper h2 {
+            color: #fff;
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .envelope-wrapper p {
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+
+        /* Gizli Mektup / Kart Alanı */
+        .card {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            padding: 30px 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            color: #333;
+            text-align: left;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .card h1 {
+            color: #ff4757;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Polaroid Fotoğraf Çerçevesi */
+        .photo-frame {
+            background: #fff;
+            padding: 10px 10px 25px 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border-radius: 8px;
+            transform: rotate(-2deg);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .photo-caption {
+            text-align: center;
+            font-family: cursive, sans-serif;
+            color: #666;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* Kalp Butonu */
+        .btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #ff4757, #ff6b81);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            transition: transform 0.2s;
+            text-align: center;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 1. Adım: Zarf Ekranı -->
+        <div class="envelope-wrapper" id="envelope" onclick="openEnvelope()">
+            <div class="envelope-icon">💌</div>
+            <h2>Güler İçin Bir Mektup Var</h2>
+            <p>Açmak için dokun...</p>
+        </div>
+
+        <!-- 2. Adım: Açılan Özel Mektup ve Kart -->
+        <div class="card" id="mainCard">
+            <h1>İyi ki Varsın Güler ❤️</h1>
+            
+            <div class="photo-frame">
+                <!-- Buradaki görsel adresini kendi fotoğrafınızın bağlantısıyla değiştirebilirsiniz -->
+                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500&auto=format&fit=crop&q=60" alt="Özel Anı">
+                <div class="photo-caption">En güzel anımız... ✨</div>
+            </div>
+
+            <p>Dünyanın en güzel kalbine sahip insanına... Hayatımı güzelleştirdiğin, her anıma ayrı bir anlam kattığın için çok teşekkür ederim. İyi ki hayatımdasın.</p>
+            
+            <button class="btn" onclick="alert('Seni Çok Seviyorum Güler! ❤️')">Seni Seviyorum</button>
+        </div>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            const envelope = document.getElementById('envelope');
+            const mainCard = document.getElementById('mainCard');
+            
+            envelope.style.opacity = '0';
+            setTimeout(() => {
+                envelope.style.display = 'none';
+                mainCard.style.display = 'block';
+            }, 300);
+        }
+    </script>
+
+</body>
+</html>
